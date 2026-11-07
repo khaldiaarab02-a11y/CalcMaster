@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://calcmaster.free.nf/sitemap.xml
