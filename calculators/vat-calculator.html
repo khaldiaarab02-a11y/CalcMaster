@@ -1,75 +1,343 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vat Calculator — CalcMaster</title>
-  <meta name="description" content="Free online Vat Calculator">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/responsive.css">
-</head>
-<body>
-  <header>
-    <div class="nav-container">
-      <a href="../index.html" class="logo-link"><img src="../assets/images/logo.svg" alt="CalcMaster Logo"></a>
-      <button class="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
-      <ul class="nav-menu">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../categories/math.html">Math</a></li>
-        <li><a href="../categories/finance.html">Finance</a></li>
-        <li><a href="../categories/health.html">Health</a></li>
-        <li><a href="../categories/converters.html">Converters</a></li>
-        <li><a href="../categories/business.html">Business</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">🌓</button></li>
-      </ul>
-    </div>
-  </header>
-  <main style="max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; flex: 1; width: 100%;">
-    <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem;">Vat Calculator</h1>
-    
-    <div class="calc-card">
-      <div class="form-group"><label>Input Value</label><input type="number" id="val1" class="form-control" value="10"></div>
-      <div class="form-group"><label>Second Value / Rate</label><input type="number" id="val2" class="form-control" value="5"></div>
-      <button class="btn-primary" onclick="calculate()">Calculate</button>
-      <div class="result-box" id="resBox" style="display:none;">
-        <h3>Result</h3>
-        <div class="result-value" id="resVal">0</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VAT Calculator – Add or Remove VAT / GST Instantly | CalcMaster</title>
+    <meta name="description" content="Calculate Value Added Tax (VAT) or GST for invoices and receipts. Add VAT to net amounts or extract VAT from gross prices in GBP, EUR, AUD, CAD, USD." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563EB" />
+    <link rel="canonical" href="/calculators/vat-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CalcMaster" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="/calculators/vat-calculator.html" />
+    <meta property="og:title" content="VAT Calculator – Add or Remove VAT / GST Instantly | CalcMaster" />
+    <meta property="og:description" content="Calculate Value Added Tax (VAT) or GST for invoices and receipts. Add VAT to net amounts or extract VAT from gross prices in GBP, EUR, AUD, CAD, USD." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="VAT Calculator – Add or Remove VAT / GST Instantly | CalcMaster" />
+    <meta name="twitter:description" content="Calculate Value Added Tax (VAT) or GST for invoices and receipts. Add VAT to net amounts or extract VAT from gross prices in GBP, EUR, AUD, CAD, USD." />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CalcMaster VAT Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"url":"/calculators/vat-calculator.html","description":"Calculate Value Added Tax (VAT) or GST for invoices and receipts. Add VAT to net amounts or extract VAT from gross prices in GBP, EUR, AUD, CAD, USD."}</script>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Financial","item":"/categories/finance.html"},{"@type":"ListItem","position":3,"name":"VAT Calculator","item":"/calculators/vat-calculator.html"}]}</script>
+  </head>
+  <body data-root="../">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="../index.html" class="brand-link" aria-label="CalcMaster Home">
+          <img
+            src="../assets/images/logo.svg"
+            alt="CalcMaster – Free Online Calculators for Everyday Life"
+            class="brand-logo-full"
+            width="188"
+            height="40" decoding="async"
+          />
+        </a>
+        <nav class="primary-nav" aria-label="Primary Navigation">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="../all-calculators.html" class="nav-link">All Calculators</a></li>
+            <li class="nav-item" data-dropdown-container>
+              <button type="button" class="nav-dropdown-btn" data-dropdown-toggle aria-expanded="false" aria-controls="header-categories-menu">
+                <span>Categories</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="header-categories-menu" class="dropdown-menu" role="menu">
+                <a href="../categories/math.html" class="dropdown-link" role="menuitem"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a>
+                <a href="../categories/finance.html" class="dropdown-link" role="menuitem"><span>Financial</span><span class="dropdown-count">12</span></a>
+                <a href="../categories/health.html" class="dropdown-link" role="menuitem"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a>
+                <a href="../categories/date-time.html" class="dropdown-link" role="menuitem"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a>
+                <a href="../categories/converters.html" class="dropdown-link" role="menuitem"><span>Unit Converters</span><span class="dropdown-count">8</span></a>
+                <a href="../categories/education.html" class="dropdown-link" role="menuitem"><span>Education</span><span class="dropdown-count">5</span></a>
+                <a href="../categories/business.html" class="dropdown-link" role="menuitem"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="../about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button type="button" class="icon-btn" data-header-search-toggle aria-label="Search calculators" aria-expanded="false" aria-controls="header-search-bar" title="Search calculators">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+          <button type="button" class="icon-btn" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+            <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="icon-btn mobile-menu-btn" data-mobile-menu-toggle aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
       </div>
-    </div>
-    <script>
-      function calculate() {
-        let v1 = parseFloat(document.getElementById('val1').value) || 0;
-        let v2 = parseFloat(document.getElementById('val2').value) || 0;
-        let res = v1 + v2;
-        document.getElementById('resVal').innerText = formatNumber(res, 2);
-        document.getElementById('resBox').style.display = 'block';
-      }
-    </script>
-    
-  </main>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4>CalcMaster</h4>
-        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Free online calculators designed for speed and accuracy.</p>
-        <p style="font-size: 0.85rem; color: #64748B;">© 2026 CalcMaster. All rights reserved.</p>
+      <div id="header-search-bar" class="header-search-bar">
+        <div class="container">
+          <div class="header-search-wrap" data-search-widget>
+            <label for="header-calc-search" class="sr-only">Search all calculators</label>
+            <div class="search-input-group">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input id="header-calc-search" type="search" class="search-input search-input-compact" placeholder="Search calculators (e.g., Mortgage, BMI, Percentage, Pressure, GPA)..." autocomplete="off" data-search-input aria-autocomplete="list" aria-expanded="false" aria-controls="header-search-results" />
+              <button type="button" class="search-clear-btn" data-search-clear aria-label="Clear search">&times;</button>
+            </div>
+            <div id="header-search-results" class="search-results" role="listbox" data-search-results></div>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Legal & Information</h4>
-        <ul>
-          <li><a href="../about.html">About Us</a></li>
-          <li><a href="../contact.html">Contact Us</a></li>
-          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../terms.html">Terms and Conditions</a></li>
-          <li><a href="../disclaimer.html">Disclaimer</a></li>
-          <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+    </header>
+    <div id="mobile-nav-drawer" class="mobile-drawer" aria-hidden="true">
+      <nav aria-label="Mobile Navigation">
+        <ul class="mobile-nav-list">
+          <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+          <li><a href="../all-calculators.html" class="mobile-nav-link">All Calculators (50)</a></li>
+          <li><a href="../about.html" class="mobile-nav-link">About Us</a></li>
+          <li><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
         </ul>
-      </div>
+        <div class="mobile-nav-group-title">Calculator Categories</div>
+        <ul class="mobile-nav-list">
+          <li><a href="../categories/math.html" class="mobile-nav-link"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="../categories/finance.html" class="mobile-nav-link"><span>Financial</span><span class="dropdown-count">12</span></a></li>
+          <li><a href="../categories/health.html" class="mobile-nav-link"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="../categories/date-time.html" class="mobile-nav-link"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="../categories/converters.html" class="mobile-nav-link"><span>Unit Converters</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="../categories/education.html" class="mobile-nav-link"><span>Education</span><span class="dropdown-count">5</span></a></li>
+          <li><a href="../categories/business.html" class="mobile-nav-link"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a></li>
+        </ul>
+      </nav>
     </div>
-  </footer>
-  <script src="../assets/js/theme.js"></script>
-  <script src="../assets/js/main.js"></script>
-</body>
+
+    <main id="main-content">
+      <section class="page-header">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../categories/finance.html">Financial</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">VAT Calculator</span>
+          </nav>
+          <h1 class="page-title">VAT Calculator</h1>
+          <p class="page-intro">
+            Add or remove Value Added Tax (VAT) or Goods and Services Tax (GST) quickly for UK, European, Australian, Canadian, and international invoices.
+          </p>
+        </div>
+      </section>
+
+      <section class="calc-section">
+        <div class="container">
+          <div class="ad-slot-wrapper" style="margin-top:0;margin-bottom:1.5rem;">
+            <aside class="ad-slot ad-slot-leaderboard" data-ad-status="placeholder" aria-label="Top advertisement slot">
+              <span class="ad-slot-label">ADVERTISEMENT SPACE (728 &times; 90)</span>
+              <span class="ad-slot-note">Reserved for official Google AdSense responsive display unit</span>
+            </aside>
+          </div>
+
+          <div id="calc-vat" class="calc-workbench">
+            <div class="calc-panel">
+              <div class="calc-alert calc-alert-error" role="alert" data-calc-alert></div>
+
+              <form data-calc-form novalidate>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="vat-currency" class="form-label">Currency</label>
+                    <select id="vat-currency" class="form-control">
+                      <option value="GBP" selected>GBP (&pound;)</option>
+                      <option value="EUR">EUR (&euro;)</option>
+                      <option value="AUD">AUD (A$)</option>
+                      <option value="CAD">CAD (CA$)</option>
+                      <option value="USD">USD ($)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="vat-mode" class="form-label">Operation</label>
+                    <select id="vat-mode" class="form-control">
+                      <option value="add" selected>Add VAT (Exclusive &rarr; Inclusive)</option>
+                      <option value="remove">Remove VAT (Inclusive &rarr; Exclusive)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid" style="margin-top:1rem;">
+                  <div class="form-group">
+                    <label for="vat-amount" class="form-label">Amount</label>
+                    <div class="input-wrap">
+                      <span class="input-prefix" data-currency-symbol>&pound;</span>
+                      <input id="vat-amount" type="number" step="any" class="form-control has-prefix" value="250" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="vat-rate" class="form-label">VAT / GST Rate</label>
+                    <div class="input-wrap">
+                      <input id="vat-rate" type="number" step="any" class="form-control has-suffix" value="20" />
+                      <span class="input-suffix">%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">Calculate</button>
+                  <button type="button" class="btn btn-secondary" data-calc-reset>Reset</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="calc-panel calc-panel-elevated" aria-live="polite">
+              <h2 class="calc-panel-title">VAT / GST Breakdown</h2>
+              <div class="result-hero-box">
+                <div class="result-label">Gross Amount (VAT Included)</div>
+                <div class="result-value" data-res-gross>&pound;300.00</div>
+                <div class="result-subtext">Shows net base amount, VAT/GST component, and gross invoice total.</div>
+              </div>
+
+              <div class="result-metrics">
+                <div class="metric-box">
+                  <div class="metric-label">Net Amount (Excl. VAT)</div>
+                  <div class="metric-val" data-res-net>&pound;250.00</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">VAT / GST Amount</div>
+                  <div class="metric-val" data-res-vat>&pound;50.00</div>
+                </div>
+              </div>
+
+              <div class="result-actions">
+                <button type="button" class="btn btn-secondary copy-btn" data-copy-result>Copy VAT Result</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ad-slot-wrapper">
+            <aside class="ad-slot ad-slot-leaderboard" data-ad-status="placeholder" aria-label="Content advertisement slot">
+              <span class="ad-slot-label">ADVERTISEMENT SPACE (728 &times; 90)</span>
+              <span class="ad-slot-note">Reserved for official Google AdSense responsive display unit</span>
+            </aside>
+          </div>
+
+          <div class="content-grid">
+            <article class="prose-block">
+              <h2>VAT &amp; GST Calculation Formulas</h2>
+              <p>Let <code>r = rate / 100</code>. Depending on whether your starting figure excludes or includes VAT:</p>
+              <div class="formula-box">
+                <code class="formula-code">Add VAT: Gross = Net &times; (1 + r) &nbsp;|&nbsp; Remove VAT: Net = Gross / (1 + r)</code>
+              </div>
+
+              <h2>Step-by-Step Instructions</h2>
+              <ol>
+                <li>Select your invoice currency (e.g., GBP, EUR, AUD, CAD, USD) and choose whether to <strong>Add VAT</strong> or <strong>Remove VAT</strong>.</li>
+                <li>Enter the amount and enter the applicable VAT or GST rate (common examples: <code>20%</code> UK standard VAT, <code>10%</code> Australian GST, <code>5%</code> Canadian GST).</li>
+                <li>Click <strong>Calculate</strong> to view net value, tax portion, and gross total.</li>
+              </ol>
+
+              <h2>Practical Examples</h2>
+              <div class="example-box">
+                <p><strong>1. Adding 20% UK VAT to a Net Invoice:</strong> Adding <strong>20%</strong> VAT to a net fee of <strong>&pound;250.00</strong> produces <strong>&pound;50.00</strong> VAT and a gross total of <strong>&pound;300.00</strong>.</p>
+                <p><strong>2. Removing 10% Australian GST from a Gross Receipt:</strong> Removing <strong>10%</strong> GST from a gross receipt of <strong>A$220.00</strong> divides by <code>1.10</code>, revealing a net price of <strong>A$200.00</strong> and <strong>A$20.00</strong> GST.</p>
+              </div>
+
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq-list" style="margin-top:0.75rem;margin-bottom:1.5rem;">
+                <div class="faq-item">
+                  <button type="button" class="faq-question" data-faq-trigger aria-expanded="false" aria-controls="vat-faq-1">
+                    <span>What are typical VAT and GST rates across major regions?</span>
+                    <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div id="vat-faq-1" class="faq-answer" hidden>Standard rates vary by jurisdiction and product type (for example, UK standard VAT is 20% with 5% reduced and 0% zero-rated items, Australian GST is 10%, and Canadian federal GST is 5% alongside provincial PST/HST). Always check current rates for your goods.</div>
+                </div>
+                <div class="faq-item">
+                  <button type="button" class="faq-question" data-faq-trigger aria-expanded="false" aria-controls="vat-faq-2">
+                    <span>How is VAT different from US retail sales tax?</span>
+                    <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div id="vat-faq-2" class="faq-answer" hidden>Value Added Tax is collected at each stage of production and consumer prices are commonly displayed VAT-inclusive, whereas US sales tax is charged once at final retail checkout on top of shelf prices.</div>
+                </div>
+              </div>
+
+              <div class="disclaimer-box">
+                <strong>Financial Assumptions &amp; Disclaimer:</strong> This calculator applies standard single-rate net/gross VAT arithmetic without invoice line-item rounding rules or cross-border reverse-charge logic. It is provided for informational estimating only and is not tax or accounting advice.
+              </div>
+            </article>
+
+            <aside>
+              <div class="sidebar-card">
+                <h3 class="calc-panel-title">Related Calculators</h3>
+                <ul class="sidebar-links">
+                  <li><a href="sales-tax-calculator.html">Sales Tax Calculator</a></li>
+                  <li><a href="profit-margin-calculator.html">Profit Margin Calculator</a></li>
+                  <li><a href="discount-calculator.html">Discount Calculator</a></li>
+                  <li><a href="../articles/how-to-calculate-percentage.html">Guide: Reverse Percentage &amp; VAT Math</a></li>
+                  <li><a href="../categories/finance.html">All Financial Calculators</a></li>
+                  <li><a href="../all-calculators.html">Browse All 50 Calculators</a></li>
+                </ul>
+              </div>
+              <aside class="ad-slot ad-slot-rectangle" data-ad-status="placeholder" aria-label="Sidebar advertisement slot">
+                <span class="ad-slot-label">ADVERTISEMENT SPACE (336 &times; 280)</span>
+                <span class="ad-slot-note">Reserved for official Google AdSense unit</span>
+              </aside>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="../index.html" class="brand-link" aria-label="CalcMaster Home">
+              <img src="../assets/images/logo.svg" alt="CalcMaster calculator logo mark" class="brand-logo-full" width="160" height="34" decoding="async" />
+            </a>
+            <p class="footer-brand-desc">
+              Free Online Calculators for Everyday Life. Fast, accurate browser-based math, finance, health, date, unit conversion, education, and business tools.
+            </p>
+          </div>
+          <div>
+            <h3 class="footer-heading">Categories</h3>
+            <ul class="footer-links">
+              <li><a href="../categories/math.html">Basic &amp; Math</a></li>
+              <li><a href="../categories/finance.html">Financial</a></li>
+              <li><a href="../categories/health.html">Health &amp; Fitness</a></li>
+              <li><a href="../categories/date-time.html">Date &amp; Time</a></li>
+              <li><a href="../categories/converters.html">Unit Converters</a></li>
+              <li><a href="../categories/education.html">Education</a></li>
+              <li><a href="../categories/business.html">Business</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Popular Tools</h3>
+            <ul class="footer-links">
+              <li><a href="../calculators/percentage-calculator.html">Percentage Calculator</a></li>
+              <li><a href="../calculators/loan-calculator.html">Loan Calculator</a></li>
+              <li><a href="../calculators/mortgage-calculator.html">Mortgage Calculator</a></li>
+              <li><a href="../calculators/bmi-calculator.html">BMI Calculator</a></li>
+              <li><a href="../calculators/age-calculator.html">Age Calculator</a></li>
+              <li><a href="../calculators/discount-calculator.html">Discount Calculator</a></li>
+              <li><a href="../all-calculators.html">All 50 Calculators</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Company &amp; Legal</h3>
+            <ul class="footer-links">
+              <li><a href="../about.html">About Us</a></li>
+              <li><a href="../contact.html">Contact Us</a></li>
+              <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="../disclaimer.html">Disclaimer</a></li>
+              <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span data-current-year>2026</span> CalcMaster. All rights reserved.</p>
+          <p>All calculations run locally in your browser. For informational and educational use only.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/search.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculators.js" defer></script>
+  </body>
 </html>

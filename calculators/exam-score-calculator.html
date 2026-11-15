@@ -1,75 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exam Score Calculator — CalcMaster</title>
-  <meta name="description" content="Free online Exam Score Calculator">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/responsive.css">
-</head>
-<body>
-  <header>
-    <div class="nav-container">
-      <a href="../index.html" class="logo-link"><img src="../assets/images/logo.svg" alt="CalcMaster Logo"></a>
-      <button class="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
-      <ul class="nav-menu">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../categories/math.html">Math</a></li>
-        <li><a href="../categories/finance.html">Finance</a></li>
-        <li><a href="../categories/health.html">Health</a></li>
-        <li><a href="../categories/converters.html">Converters</a></li>
-        <li><a href="../categories/business.html">Business</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">🌓</button></li>
-      </ul>
-    </div>
-  </header>
-  <main style="max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; flex: 1; width: 100%;">
-    <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem;">Exam Score Calculator</h1>
-    
-    <div class="calc-card">
-      <div class="form-group"><label>Input Value</label><input type="number" id="val1" class="form-control" value="10"></div>
-      <div class="form-group"><label>Second Value / Rate</label><input type="number" id="val2" class="form-control" value="5"></div>
-      <button class="btn-primary" onclick="calculate()">Calculate</button>
-      <div class="result-box" id="resBox" style="display:none;">
-        <h3>Result</h3>
-        <div class="result-value" id="resVal">0</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Score Calculator – Test Percentage | CalcMaster</title>
+    <meta
+      name="description"
+      content="Calculate raw exam score percentage, letter grade, wrong answers, and pass/fail status with optional negative-marking deductions per wrong answer."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563EB" />
+    <link rel="canonical" href="/calculators/exam-score-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CalcMaster" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="/calculators/exam-score-calculator.html" />
+    <meta property="og:title" content="Exam Score Calculator – Test Percentage | CalcMaster" />
+    <meta property="og:description" content="Grade quizzes and tests cleanly with percentage score, letter grade, wrong count, and negative-marking penalty support." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Exam Score Calculator – Test Percentage | CalcMaster" />
+    <meta name="twitter:description" content="Grade quizzes and tests cleanly with percentage score, letter grade, wrong count, and negative-marking penalty support." />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CalcMaster Exam Score Calculator","applicationCategory":"EducationalApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"/calculators/exam-score-calculator.html","description":"Calculate raw exam score percentage, letter grade, wrong answers, and pass/fail status with optional negative-marking deductions per wrong answer."}</script>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Education","item":"/categories/education.html"},{"@type":"ListItem","position":3,"name":"Exam Score Calculator","item":"/calculators/exam-score-calculator.html"}]}</script>
+  </head>
+  <body data-root="../">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="../index.html" class="brand-link" aria-label="CalcMaster Home">
+          <img src="../assets/images/logo.svg" alt="CalcMaster – Free Online Calculators for Everyday Life" class="brand-logo-full" width="188" height="40" decoding="async" />
+        </a>
+        <nav class="primary-nav" aria-label="Primary Navigation">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="../all-calculators.html" class="nav-link">All Calculators</a></li>
+            <li class="nav-item" data-dropdown-container>
+              <button type="button" class="nav-dropdown-btn" data-dropdown-toggle aria-expanded="false" aria-controls="header-categories-menu">
+                <span>Categories</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="header-categories-menu" class="dropdown-menu" role="menu">
+                <a href="../categories/math.html" class="dropdown-link" role="menuitem"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a>
+                <a href="../categories/finance.html" class="dropdown-link" role="menuitem"><span>Financial</span><span class="dropdown-count">12</span></a>
+                <a href="../categories/health.html" class="dropdown-link" role="menuitem"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a>
+                <a href="../categories/date-time.html" class="dropdown-link" role="menuitem"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a>
+                <a href="../categories/converters.html" class="dropdown-link" role="menuitem"><span>Unit Converters</span><span class="dropdown-count">8</span></a>
+                <a href="../categories/education.html" class="dropdown-link" role="menuitem"><span>Education</span><span class="dropdown-count">5</span></a>
+                <a href="../categories/business.html" class="dropdown-link" role="menuitem"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="../about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button type="button" class="icon-btn" data-header-search-toggle aria-label="Search calculators" aria-expanded="false" aria-controls="header-search-bar" title="Search calculators">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+          <button type="button" class="icon-btn" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+            <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="icon-btn mobile-menu-btn" data-mobile-menu-toggle aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
       </div>
-    </div>
-    <script>
-      function calculate() {
-        let v1 = parseFloat(document.getElementById('val1').value) || 0;
-        let v2 = parseFloat(document.getElementById('val2').value) || 0;
-        let res = v1 + v2;
-        document.getElementById('resVal').innerText = formatNumber(res, 2);
-        document.getElementById('resBox').style.display = 'block';
-      }
-    </script>
-    
-  </main>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4>CalcMaster</h4>
-        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Free online calculators designed for speed and accuracy.</p>
-        <p style="font-size: 0.85rem; color: #64748B;">© 2026 CalcMaster. All rights reserved.</p>
+      <div id="header-search-bar" class="header-search-bar">
+        <div class="container">
+          <div class="header-search-wrap" data-search-widget>
+            <label for="header-calc-search" class="sr-only">Search all calculators</label>
+            <div class="search-input-group">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input id="header-calc-search" type="search" class="search-input search-input-compact" placeholder="Search calculators (e.g., Mortgage, BMI, Percentage, Pressure, GPA)..." autocomplete="off" data-search-input aria-autocomplete="list" aria-expanded="false" aria-controls="header-search-results" />
+              <button type="button" class="search-clear-btn" data-search-clear aria-label="Clear search">&times;</button>
+            </div>
+            <div id="header-search-results" class="search-results" role="listbox" data-search-results></div>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Legal & Information</h4>
-        <ul>
-          <li><a href="../about.html">About Us</a></li>
-          <li><a href="../contact.html">Contact Us</a></li>
-          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../terms.html">Terms and Conditions</a></li>
-          <li><a href="../disclaimer.html">Disclaimer</a></li>
-          <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+    </header>
+    <div id="mobile-nav-drawer" class="mobile-drawer" aria-hidden="true">
+      <nav aria-label="Mobile Navigation">
+        <ul class="mobile-nav-list">
+          <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+          <li><a href="../all-calculators.html" class="mobile-nav-link">All Calculators (50)</a></li>
+          <li><a href="../about.html" class="mobile-nav-link">About Us</a></li>
+          <li><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
         </ul>
-      </div>
+        <div class="mobile-nav-group-title">Calculator Categories</div>
+        <ul class="mobile-nav-list">
+          <li><a href="../categories/math.html" class="mobile-nav-link"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="../categories/finance.html" class="mobile-nav-link"><span>Financial</span><span class="dropdown-count">12</span></a></li>
+          <li><a href="../categories/health.html" class="mobile-nav-link"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="../categories/date-time.html" class="mobile-nav-link"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="../categories/converters.html" class="mobile-nav-link"><span>Unit Converters</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="../categories/education.html" class="mobile-nav-link"><span>Education</span><span class="dropdown-count">5</span></a></li>
+          <li><a href="../categories/business.html" class="mobile-nav-link"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a></li>
+        </ul>
+      </nav>
     </div>
-  </footer>
-  <script src="../assets/js/theme.js"></script>
-  <script src="../assets/js/main.js"></script>
-</body>
+
+    <main id="main-content">
+      <section class="page-header">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../categories/education.html">Education</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">Exam Score Calculator</span>
+          </nav>
+          <h1 class="page-title">Exam Score Calculator</h1>
+          <p class="page-intro">
+            Grade quizzes, midterms, and competitive exams instantly from total questions, correct answers, and optional wrong-answer penalty deductions.
+          </p>
+        </div>
+      </section>
+
+      <section class="calc-section">
+        <div class="container">
+          <div class="ad-slot-wrapper" style="margin-top:0;margin-bottom:1.5rem;">
+            <aside class="ad-slot ad-slot-leaderboard" data-ad-status="placeholder" aria-label="Top advertisement slot">
+              <span class="ad-slot-label">ADVERTISEMENT SPACE (728 &times; 90)</span>
+              <span class="ad-slot-note">Reserved for official Google AdSense responsive display unit</span>
+            </aside>
+          </div>
+
+          <div id="calc-exam-score" class="calc-workbench">
+            <div class="calc-panel">
+              <div class="calc-alert calc-alert-error" role="alert" data-calc-alert></div>
+
+              <form data-calc-form novalidate>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="es-total" class="form-label">Total Questions / Points</label>
+                    <input id="es-total" type="number" step="any" class="form-control" value="50" />
+                  </div>
+                  <div class="form-group">
+                    <label for="es-correct" class="form-label">Correct Answers / Points Earned</label>
+                    <input id="es-correct" type="number" step="any" class="form-control" value="43" />
+                  </div>
+                </div>
+
+                <div class="form-grid" style="margin-top:1rem;">
+                  <div class="form-group">
+                    <label for="es-penalty" class="form-label">Wrong-Answer Penalty (Points Deducted)</label>
+                    <input id="es-penalty" type="number" step="any" class="form-control" value="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="es-pass" class="form-label">Passing Threshold (%)</label>
+                    <div class="input-wrap">
+                      <input id="es-pass" type="number" step="any" class="form-control has-suffix" value="60" />
+                      <span class="input-suffix">%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">Calculate</button>
+                  <button type="button" class="btn btn-secondary" data-calc-reset>Reset</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="calc-panel calc-panel-elevated" aria-live="polite">
+              <h2 class="calc-panel-title">Exam Grade Summary</h2>
+              <div class="result-hero-box">
+                <div class="result-label">Percentage Score</div>
+                <div class="result-value" data-res-pct>86.00%</div>
+                <div class="result-subtext" data-res-sub>43 / 50 net points &middot; Pass (60% min)</div>
+              </div>
+              <div class="result-metrics">
+                <div class="metric-box">
+                  <div class="metric-label">Letter Grade</div>
+                  <div class="metric-val" data-res-letter>B</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">Net Points</div>
+                  <div class="metric-val" data-res-points>43 / 50</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">Incorrect / Missed</div>
+                  <div class="metric-val" data-res-wrong>7</div>
+                </div>
+              </div>
+              <div class="result-actions">
+                <button type="button" class="btn btn-secondary copy-btn" data-copy-result>Copy Score</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ad-slot-wrapper">
+            <aside class="ad-slot ad-slot-leaderboard" data-ad-status="placeholder" aria-label="Content advertisement slot">
+              <span class="ad-slot-label">ADVERTISEMENT SPACE (728 &times; 90)</span>
+              <span class="ad-slot-note">Reserved for official Google AdSense responsive display unit</span>
+            </aside>
+          </div>
+
+          <div class="content-grid">
+            <article class="prose-block">
+              <h2>Raw Exam Score &amp; Penalty Formula</h2>
+              <p>For standard grading (zero penalty), percentage is simply <code>(Correct &divide; Total) &times; 100</code>. When negative marking is enabled, wrong answers subtract a penalty floored at zero:</p>
+              <div class="formula-box">
+                <code class="formula-code">Net Points = max(0, Correct &minus; (Total &minus; Correct) &times; Penalty) &nbsp;|&nbsp; Score % = (Net Points &divide; Total) &times; 100</code>
+              </div>
+
+              <h2>Step-by-Step Instructions</h2>
+              <ol>
+                <li>Enter the total number of exam questions or maximum points available.</li>
+                <li>Enter the count of questions answered correctly (must not exceed total questions).</li>
+                <li>Leave <strong>Wrong-Answer Penalty</strong> at <code>0</code> for normal tests, or enter e.g. <code>0.25</code> if each incorrect multiple-choice guess deducts a quarter point.</li>
+                <li>Adjust the <strong>Passing Threshold</strong> if your course requires e.g. 70% or 75% to pass.</li>
+              </ol>
+
+              <h2>Practical Examples</h2>
+              <div class="example-box">
+                <p><strong>1. Standard Quiz (43 Correct out of 50):</strong> With <code>0</code> penalty and a 60% pass mark, incorrect answers = <strong>7</strong>, net score = <strong>43 / 50</strong>, percentage = <strong>86.00%</strong> (Letter Grade: <strong>B</strong>, Status: <strong>Pass</strong>).</p>
+                <p><strong>2. Negative-Marking Entrance Exam (48 Correct of 60, 0.25 Penalty):</strong> With <strong>12 wrong answers</strong> penalized at 0.25 each (3.00 points deducted), net score becomes <code>48 &minus; 3 = 45</code> out of 60 = <strong>75.00%</strong> (Letter Grade: <strong>C</strong>).</p>
+              </div>
+
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq-list" style="margin-top:0.75rem;margin-bottom:1.5rem;">
+                <div class="faq-item">
+                  <button type="button" class="faq-question" data-faq-trigger aria-expanded="false" aria-controls="es-faq-1">
+                    <span>When is wrong-answer negative marking used?</span>
+                    <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div id="es-faq-1" class="faq-answer" hidden>Many standardized aptitude, civil-service, and university entrance exams deduct 0.25 or 0.33 points per incorrect answer to discourage random guessing.</div>
+                </div>
+                <div class="faq-item">
+                  <button type="button" class="faq-question" data-faq-trigger aria-expanded="false" aria-controls="es-faq-2">
+                    <span>How is this different from the Final Exam Calculator?</span>
+                    <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div id="es-faq-2" class="faq-answer" hidden>This Exam Score Calculator grades a test you have already taken (correct vs. total questions). To calculate the score needed on an upcoming final exam, use our <a href="final-exam-calculator.html">Final Exam Calculator</a>.</div>
+                </div>
+              </div>
+
+              <div class="disclaimer-box">
+                <strong>Grading Note:</strong> Official curves, partial-credit rubrics, and passing thresholds vary by school and exam board. Always confirm rules with your instructor.
+              </div>
+            </article>
+
+            <aside>
+              <div class="sidebar-card">
+                <h3 class="calc-panel-title">Related Calculators</h3>
+                <ul class="sidebar-links">
+                  <li><a href="final-exam-calculator.html">Final Exam Calculator</a></li>
+                  <li><a href="grade-calculator.html">Grade Calculator</a></li>
+                  <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                  <li><a href="../articles/how-to-calculate-percentage.html">Guide: How to Calculate Percentages</a></li>
+                  <li><a href="../categories/education.html">All Education Calculators</a></li>
+                  <li><a href="../all-calculators.html">Browse All 50 Calculators</a></li>
+                </ul>
+              </div>
+              <aside class="ad-slot ad-slot-rectangle" data-ad-status="placeholder" aria-label="Sidebar advertisement slot">
+                <span class="ad-slot-label">ADVERTISEMENT SPACE (336 &times; 280)</span>
+                <span class="ad-slot-note">Reserved for official Google AdSense unit</span>
+              </aside>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="../index.html" class="brand-link" aria-label="CalcMaster Home">
+              <img src="../assets/images/logo.svg" alt="CalcMaster calculator logo mark" class="brand-logo-full" width="160" height="34" decoding="async" />
+            </a>
+            <p class="footer-brand-desc">
+              Free Online Calculators for Everyday Life. Fast, accurate browser-based math, finance, health, date, unit conversion, education, and business tools.
+            </p>
+          </div>
+          <div>
+            <h3 class="footer-heading">Categories</h3>
+            <ul class="footer-links">
+              <li><a href="../categories/math.html">Basic &amp; Math</a></li>
+              <li><a href="../categories/finance.html">Financial</a></li>
+              <li><a href="../categories/health.html">Health &amp; Fitness</a></li>
+              <li><a href="../categories/date-time.html">Date &amp; Time</a></li>
+              <li><a href="../categories/converters.html">Unit Converters</a></li>
+              <li><a href="../categories/education.html">Education</a></li>
+              <li><a href="../categories/business.html">Business</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Popular Tools</h3>
+            <ul class="footer-links">
+              <li><a href="../calculators/percentage-calculator.html">Percentage Calculator</a></li>
+              <li><a href="../calculators/loan-calculator.html">Loan Calculator</a></li>
+              <li><a href="../calculators/mortgage-calculator.html">Mortgage Calculator</a></li>
+              <li><a href="../calculators/bmi-calculator.html">BMI Calculator</a></li>
+              <li><a href="../calculators/age-calculator.html">Age Calculator</a></li>
+              <li><a href="../calculators/discount-calculator.html">Discount Calculator</a></li>
+              <li><a href="../all-calculators.html">All 50 Calculators</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Company &amp; Legal</h3>
+            <ul class="footer-links">
+              <li><a href="../about.html">About Us</a></li>
+              <li><a href="../contact.html">Contact Us</a></li>
+              <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="../disclaimer.html">Disclaimer</a></li>
+              <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span data-current-year>2026</span> CalcMaster. All rights reserved.</p>
+          <p>All calculations run locally in your browser. For informational and educational use only.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/search.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculators.js" defer></script>
+  </body>
 </html>

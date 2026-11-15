@@ -1,75 +1,365 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Savings Calculator — CalcMaster</title>
-  <meta name="description" content="Free online Savings Calculator">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/responsive.css">
-</head>
-<body>
-  <header>
-    <div class="nav-container">
-      <a href="../index.html" class="logo-link"><img src="../assets/images/logo.svg" alt="CalcMaster Logo"></a>
-      <button class="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
-      <ul class="nav-menu">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../categories/math.html">Math</a></li>
-        <li><a href="../categories/finance.html">Finance</a></li>
-        <li><a href="../categories/health.html">Health</a></li>
-        <li><a href="../categories/converters.html">Converters</a></li>
-        <li><a href="../categories/business.html">Business</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">🌓</button></li>
-      </ul>
-    </div>
-  </header>
-  <main style="max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; flex: 1; width: 100%;">
-    <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem;">Savings Calculator</h1>
-    
-    <div class="calc-card">
-      <div class="form-group"><label>Input Value</label><input type="number" id="val1" class="form-control" value="10"></div>
-      <div class="form-group"><label>Second Value / Rate</label><input type="number" id="val2" class="form-control" value="5"></div>
-      <button class="btn-primary" onclick="calculate()">Calculate</button>
-      <div class="result-box" id="resBox" style="display:none;">
-        <h3>Result</h3>
-        <div class="result-value" id="resVal">0</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Savings Calculator – Plan Deposits &amp; Track Goals | CalcMaster</title>
+    <meta
+      name="description"
+      content="Calculate how fast your emergency fund or savings goal grows with regular monthly deposits, APY interest, and goal completion percentage."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563EB" />
+    <link rel="canonical" href="/calculators/savings-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CalcMaster" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="/calculators/savings-calculator.html" />
+    <meta property="og:title" content="Savings Calculator – Plan Deposits &amp; Track Goals | CalcMaster" />
+    <meta property="og:description" content="Free online savings goal calculator with monthly compounding and target completion tracking." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Savings Calculator – Plan Deposits &amp; Track Goals | CalcMaster" />
+    <meta name="twitter:description" content="Free online savings goal calculator with monthly compounding and target completion tracking." />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CalcMaster Savings Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"/calculators/savings-calculator.html","description":"Calculate how fast your emergency fund or savings goal grows with regular monthly deposits, APY interest, and goal completion percentage."}</script>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Financial","item":"/categories/finance.html"},{"@type":"ListItem","position":3,"name":"Savings Calculator","item":"/calculators/savings-calculator.html"}]}</script>
+  </head>
+  <body data-root="../">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="../index.html" class="brand-link" aria-label="CalcMaster Home">
+          <img
+            src="../assets/images/logo.svg"
+            alt="CalcMaster – Free Online Calculators for Everyday Life"
+            class="brand-logo-full"
+            width="188"
+            height="40" decoding="async"
+          />
+        </a>
+        <nav class="primary-nav" aria-label="Primary Navigation">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="../all-calculators.html" class="nav-link">All Calculators</a></li>
+            <li class="nav-item" data-dropdown-container>
+              <button type="button" class="nav-dropdown-btn" data-dropdown-toggle aria-expanded="false" aria-controls="header-categories-menu">
+                <span>Categories</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="header-categories-menu" class="dropdown-menu" role="menu">
+                <a href="../categories/math.html" class="dropdown-link" role="menuitem"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a>
+                <a href="../categories/finance.html" class="dropdown-link" role="menuitem"><span>Financial</span><span class="dropdown-count">12</span></a>
+                <a href="../categories/health.html" class="dropdown-link" role="menuitem"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a>
+                <a href="../categories/date-time.html" class="dropdown-link" role="menuitem"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a>
+                <a href="../categories/converters.html" class="dropdown-link" role="menuitem"><span>Unit Converters</span><span class="dropdown-count">8</span></a>
+                <a href="../categories/education.html" class="dropdown-link" role="menuitem"><span>Education</span><span class="dropdown-count">5</span></a>
+                <a href="../categories/business.html" class="dropdown-link" role="menuitem"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="../about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button type="button" class="icon-btn" data-header-search-toggle aria-label="Search calculators" aria-expanded="false" aria-controls="header-search-bar" title="Search calculators">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+          <button type="button" class="icon-btn" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+            <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="icon-btn mobile-menu-btn" data-mobile-menu-toggle aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
       </div>
-    </div>
-    <script>
-      function calculate() {
-        let v1 = parseFloat(document.getElementById('val1').value) || 0;
-        let v2 = parseFloat(document.getElementById('val2').value) || 0;
-        let res = v1 + v2;
-        document.getElementById('resVal').innerText = formatNumber(res, 2);
-        document.getElementById('resBox').style.display = 'block';
-      }
-    </script>
-    
-  </main>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4>CalcMaster</h4>
-        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Free online calculators designed for speed and accuracy.</p>
-        <p style="font-size: 0.85rem; color: #64748B;">© 2026 CalcMaster. All rights reserved.</p>
+      <div id="header-search-bar" class="header-search-bar">
+        <div class="container">
+          <div class="header-search-wrap" data-search-widget>
+            <label for="header-calc-search" class="sr-only">Search all calculators</label>
+            <div class="search-input-group">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input id="header-calc-search" type="search" class="search-input search-input-compact" placeholder="Search calculators (e.g., Mortgage, BMI, Percentage, Pressure, GPA)..." autocomplete="off" data-search-input aria-autocomplete="list" aria-expanded="false" aria-controls="header-search-results" />
+              <button type="button" class="search-clear-btn" data-search-clear aria-label="Clear search">&times;</button>
+            </div>
+            <div id="header-search-results" class="search-results" role="listbox" data-search-results></div>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Legal & Information</h4>
-        <ul>
-          <li><a href="../about.html">About Us</a></li>
-          <li><a href="../contact.html">Contact Us</a></li>
-          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../terms.html">Terms and Conditions</a></li>
-          <li><a href="../disclaimer.html">Disclaimer</a></li>
-          <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+    </header>
+    <div id="mobile-nav-drawer" class="mobile-drawer" aria-hidden="true">
+      <nav aria-label="Mobile Navigation">
+        <ul class="mobile-nav-list">
+          <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+          <li><a href="../all-calculators.html" class="mobile-nav-link">All Calculators (50)</a></li>
+          <li><a href="../about.html" class="mobile-nav-link">About Us</a></li>
+          <li><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
         </ul>
-      </div>
+        <div class="mobile-nav-group-title">Calculator Categories</div>
+        <ul class="mobile-nav-list">
+          <li><a href="../categories/math.html" class="mobile-nav-link"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="../categories/finance.html" class="mobile-nav-link"><span>Financial</span><span class="dropdown-count">12</span></a></li>
+          <li><a href="../categories/health.html" class="mobile-nav-link"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="../categories/date-time.html" class="mobile-nav-link"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="../categories/converters.html" class="mobile-nav-link"><span>Unit Converters</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="../categories/education.html" class="mobile-nav-link"><span>Education</span><span class="dropdown-count">5</span></a></li>
+          <li><a href="../categories/business.html" class="mobile-nav-link"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a></li>
+        </ul>
+      </nav>
     </div>
-  </footer>
-  <script src="../assets/js/theme.js"></script>
-  <script src="../assets/js/main.js"></script>
-</body>
+
+    <main id="main-content">
+      <section class="page-header">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="../categories/finance.html">Financial</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">Savings Calculator</span>
+          </nav>
+          <h1 class="page-title">Savings Calculator</h1>
+          <p class="page-intro">
+            Plan emergency funds, home down payments, or major purchase targets by projecting monthly deposits and savings interest growth over time.
+          </p>
+        </div>
+      </section>
+
+      <section class="calc-section">
+        <div class="container">
+          <div class="ad-slot-wrapper" style="margin-top:0;margin-bottom:1.5rem;">
+            <aside class="ad-slot ad-slot-leaderboard" data-ad-status="placeholder" aria-label="Top advertisement slot">
+              <span class="ad-slot-label">ADVERTISEMENT SPACE (728 &times; 90)</span>
+              <span class="ad-slot-note">Reserved for official Google AdSense responsive display unit</span>
+            </aside>
+          </div>
+
+          <div id="calc-savings" class="calc-workbench">
+            <div class="calc-panel">
+              <div class="calc-alert calc-alert-error" role="alert" data-calc-alert></div>
+
+              <form data-calc-form novalidate>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="sav-currency" class="form-label">Currency</label>
+                    <select id="sav-currency" class="form-control">
+                      <option value="USD" selected>USD ($)</option>
+                      <option value="CAD">CAD (CA$)</option>
+                      <option value="GBP">GBP (&pound;)</option>
+                      <option value="AUD">AUD (A$)</option>
+                      <option value="EUR">EUR (&euro;)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="sav-init" class="form-label">Initial Savings</label>
+                    <div class="input-wrap">
+                      <span class="input-prefix" data-currency-symbol>$</span>
+                      <input id="sav-init" type="number" step="any" class="form-control has-prefix" value="2500" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-grid" style="margin-top:1rem;">
+                  <div class="form-group">
+                    <label for="sav-monthly" class="form-label">Monthly Deposit</label>
+                    <div class="input-wrap">
+                      <span class="input-prefix" data-currency-symbol>$</span>
+                      <input id="sav-monthly" type="number" step="any" class="form-control has-prefix" value="400" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="sav-apy" class="form-label">Annual Interest Rate</label>
+                    <div class="input-wrap">
+                      <input id="sav-apy" type="number" step="any" class="form-control has-suffix" value="4.25" />
+                      <span class="input-suffix">%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-grid" style="margin-top:1rem;">
+                  <div class="form-group">
+                    <label for="sav-years" class="form-label">Time Period (Years)</label>
+                    <input id="sav-years" type="number" step="any" class="form-control" value="5" />
+                  </div>
+                  <div class="form-group">
+                    <label for="sav-goal" class="form-label">Savings Goal (Optional)</label>
+                    <div class="input-wrap">
+                      <span class="input-prefix" data-currency-symbol>$</span>
+                      <input id="sav-goal" type="number" step="any" class="form-control has-prefix" value="25000" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">Calculate</button>
+                  <button type="button" class="btn btn-secondary" data-calc-reset>Reset</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="calc-panel calc-panel-elevated" aria-live="polite">
+              <h2 class="calc-panel-title">Savings Forecast</h2>
+              <div class="result-hero-box">
+                <div class="result-label">Projected End Balance</div>
+                <div class="result-value" data-res-balance>$29,778.97</div>
+                <div class="result-subtext">Calculated with monthly interest compounding and end-of-month deposits.</div>
+              </div>
+
+              <div class="result-metrics">
+                <div class="metric-box">
+                  <div class="metric-label">Total Deposited</div>
+                  <div class="metric-val" data-res-deposits>$26,500.00</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">Total Interest Earned</div>
+                  <div class="metric-val" data-res-interest>$3,278.97</div>
+                </div>
+                <div class="metric-box" style="grid-column:1 / -1;">
+                  <div class="metric-label">Goal Progress</div>
+                  <div class="metric-val" data-res-goal>119.1% of $25,000.00</div>
+                </div>
+              </div>
+
+              <div class="result-actions">
+                <button type="button" class="btn btn-secondary copy-btn" data-copy-result>Copy Forecast</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ad-slot-wrapper">
+            <aside class="ad-slot ad-slot-leaderboard" data-ad-status="placeholder" aria-label="Content advertisement slot">
+              <span class="ad-slot-label">ADVERTISEMENT SPACE (728 &times; 90)</span>
+              <span class="ad-slot-note">Reserved for official Google AdSense responsive display unit</span>
+            </aside>
+          </div>
+
+          <div class="content-grid">
+            <article class="prose-block">
+              <h2>Savings Accumulation Formula</h2>
+              <p>With initial savings <code>P</code>, recurring monthly deposit <code>C</code>, monthly rate <code>r = annual rate / 12</code>, and total months <code>n</code>:</p>
+              <div class="formula-box">
+                <code class="formula-code">Balance = P(1 + r)^n + C &times; [ ((1 + r)^n &minus; 1) / r ]</code>
+              </div>
+
+              <h2>Step-by-Step Instructions</h2>
+              <ol>
+                <li>Select your preferred currency symbol and enter your current starting savings balance.</li>
+                <li>Enter your planned monthly deposit amount and expected annual savings rate (%).</li>
+                <li>Set the time period in years and enter an optional target savings goal.</li>
+                <li>Click <strong>Calculate</strong> to see your projected balance, deposits vs. interest earned, and goal completion percentage.</li>
+              </ol>
+
+              <h2>Practical Examples</h2>
+              <div class="example-box">
+                <p><strong>1. Five-Year Emergency &amp; Down-Payment Fund:</strong> Starting with <strong>$2,500</strong> and saving <strong>$400/month</strong> for <strong>5 years (60 months)</strong> at <strong>4.25%</strong> deposits <strong>$26,500.00</strong> total and earns <strong>$3,278.97</strong> in interest, reaching <strong>$29,778.97</strong> (119.1% of a $25,000 goal).</p>
+                <p><strong>2. Two-Year Travel / Car Fund:</strong> Starting with <strong>$1,000</strong> and adding <strong>$250/month</strong> at <strong>4.00%</strong> for <strong>2 years (24 months)</strong> yields <strong>$7,318.86</strong> ($7,000.00 deposited + $318.86 interest).</p>
+              </div>
+
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq-list" style="margin-top:0.75rem;margin-bottom:1.5rem;">
+                <div class="faq-item">
+                  <button type="button" class="faq-question" data-faq-trigger aria-expanded="false" aria-controls="sav-faq-1">
+                    <span>Does this savings calculator deduct tax on earned interest?</span>
+                    <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div id="sav-faq-1" class="faq-answer" hidden>No. All outputs represent pre-tax gross interest growth. Interest earned in non-tax-advantaged bank accounts may be subject to income tax depending on your country.</div>
+                </div>
+                <div class="faq-item">
+                  <button type="button" class="faq-question" data-faq-trigger aria-expanded="false" aria-controls="sav-faq-2">
+                    <span>What if I want to model variable annual compounding instead of monthly?</span>
+                    <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                  <div id="sav-faq-2" class="faq-answer" hidden>High-yield savings accounts typically compound monthly or daily. If you want to compare daily, quarterly, or annual compounding schedules with a year-by-year table, use our <a href="compound-interest-calculator.html">Compound Interest Calculator</a>.</div>
+                </div>
+              </div>
+
+              <div class="disclaimer-box">
+                <strong>Financial Assumptions &amp; Disclaimer:</strong> Results assume a fixed interest rate compounded monthly, consistent end-of-month deposits, and do not include taxes, bank maintenance fees, or inflation. This tool is for informational planning only and is not personalized financial advice.
+              </div>
+            </article>
+
+            <aside>
+              <div class="sidebar-card">
+                <h3 class="calc-panel-title">Related Calculators</h3>
+                <ul class="sidebar-links">
+                  <li><a href="compound-interest-calculator.html">Compound Interest Calculator</a></li>
+                  <li><a href="investment-calculator.html">Investment Calculator</a></li>
+                  <li><a href="simple-interest-calculator.html">Simple Interest Calculator</a></li>
+                  <li><a href="../articles/how-compound-interest-works.html">Guide: How Compound Interest Works</a></li>
+                  <li><a href="../categories/finance.html">All Financial Calculators</a></li>
+                  <li><a href="../all-calculators.html">Browse All 50 Calculators</a></li>
+                </ul>
+              </div>
+              <aside class="ad-slot ad-slot-rectangle" data-ad-status="placeholder" aria-label="Sidebar advertisement slot">
+                <span class="ad-slot-label">ADVERTISEMENT SPACE (336 &times; 280)</span>
+                <span class="ad-slot-note">Reserved for official Google AdSense unit</span>
+              </aside>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="../index.html" class="brand-link" aria-label="CalcMaster Home">
+              <img src="../assets/images/logo.svg" alt="CalcMaster calculator logo mark" class="brand-logo-full" width="160" height="34" decoding="async" />
+            </a>
+            <p class="footer-brand-desc">
+              Free Online Calculators for Everyday Life. Fast, accurate browser-based math, finance, health, date, unit conversion, education, and business tools.
+            </p>
+          </div>
+          <div>
+            <h3 class="footer-heading">Categories</h3>
+            <ul class="footer-links">
+              <li><a href="../categories/math.html">Basic &amp; Math</a></li>
+              <li><a href="../categories/finance.html">Financial</a></li>
+              <li><a href="../categories/health.html">Health &amp; Fitness</a></li>
+              <li><a href="../categories/date-time.html">Date &amp; Time</a></li>
+              <li><a href="../categories/converters.html">Unit Converters</a></li>
+              <li><a href="../categories/education.html">Education</a></li>
+              <li><a href="../categories/business.html">Business</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Popular Tools</h3>
+            <ul class="footer-links">
+              <li><a href="../calculators/percentage-calculator.html">Percentage Calculator</a></li>
+              <li><a href="../calculators/loan-calculator.html">Loan Calculator</a></li>
+              <li><a href="../calculators/mortgage-calculator.html">Mortgage Calculator</a></li>
+              <li><a href="../calculators/bmi-calculator.html">BMI Calculator</a></li>
+              <li><a href="../calculators/age-calculator.html">Age Calculator</a></li>
+              <li><a href="../calculators/discount-calculator.html">Discount Calculator</a></li>
+              <li><a href="../all-calculators.html">All 50 Calculators</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Company &amp; Legal</h3>
+            <ul class="footer-links">
+              <li><a href="../about.html">About Us</a></li>
+              <li><a href="../contact.html">Contact Us</a></li>
+              <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="../disclaimer.html">Disclaimer</a></li>
+              <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span data-current-year>2026</span> CalcMaster. All rights reserved.</p>
+          <p>All calculations run locally in your browser. For informational and educational use only.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/search.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculators.js" defer></script>
+  </body>
 </html>
