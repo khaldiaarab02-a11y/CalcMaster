@@ -1,2 +1,0 @@
-# CalcMaster
-CalcMaster application
