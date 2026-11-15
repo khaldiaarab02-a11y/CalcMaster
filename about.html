@@ -1,56 +1,325 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — CalcMaster</title>
-  <meta name="description" content="Learn about CalcMaster.">
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-</head>
-<body>
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo-link"><img src="assets/images/logo.svg" alt="CalcMaster Logo"></a>
-      <button class="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="categories/math.html">Math</a></li>
-        <li><a href="categories/finance.html">Finance</a></li>
-        <li><a href="categories/health.html">Health</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">🌓</button></li>
-      </ul>
-    </div>
-  </header>
-  <main style="max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; flex: 1; width: 100%;">
-    <div class="calc-card" style="padding: 2.5rem;">
-      <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem;">About CalcMaster</h1>
-      <p>CalcMaster provides free online calculators for math, finance, health, and converters.</p>
-    </div>
-  </main>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4>CalcMaster</h4>
-        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Free online calculators designed for speed and accuracy.</p>
-        <p style="font-size: 0.85rem; color: #64748B;">© 2026 CalcMaster. All rights reserved.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us – Free Online Calculators &amp; Standards | CalcMaster</title>
+    <meta name="description" content="Learn how CalcMaster builds 50 free browser-based calculators and guides for math, finance, health, dates, unit conversion, education, and business." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563EB" />
+    <link rel="canonical" href="/about.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CalcMaster" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="/about.html" />
+    <meta property="og:title" content="About Us – Free Online Calculators &amp; Standards | CalcMaster" />
+    <meta property="og:description" content="Learn how CalcMaster builds 50 free browser-based calculators and guides for math, finance, health, dates, unit conversion, education, and business." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="About Us | CalcMaster" />
+    <meta name="twitter:description" content="Learn how CalcMaster builds 50 free browser-based calculators and guides for math, finance, health, dates, unit conversion, education, and business." />
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About CalcMaster",
+        "description": "Overview of CalcMaster's free browser-based online calculators, calculation standards, educational mission, and scope disclaimers.",
+        "publisher": { "@type": "Organization", "name": "CalcMaster" }
+      }
+    </script>
+  </head>
+  <body data-root="">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand-link" aria-label="CalcMaster Home">
+          <img
+            src="assets/images/logo.svg"
+            alt="CalcMaster – Free Online Calculators for Everyday Life"
+            class="brand-logo-full"
+            width="188"
+            height="40" decoding="async"
+          />
+        </a>
+        <nav class="primary-nav" aria-label="Primary Navigation">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="all-calculators.html" class="nav-link">All Calculators</a></li>
+            <li class="nav-item" data-dropdown-container>
+              <button
+                type="button"
+                class="nav-dropdown-btn"
+                data-dropdown-toggle
+                aria-expanded="false"
+                aria-controls="header-categories-menu"
+              >
+                <span>Categories</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div id="header-categories-menu" class="dropdown-menu" role="menu">
+                <a href="categories/math.html" class="dropdown-link" role="menuitem"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a>
+                <a href="categories/finance.html" class="dropdown-link" role="menuitem"><span>Financial</span><span class="dropdown-count">12</span></a>
+                <a href="categories/health.html" class="dropdown-link" role="menuitem"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a>
+                <a href="categories/date-time.html" class="dropdown-link" role="menuitem"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a>
+                <a href="categories/converters.html" class="dropdown-link" role="menuitem"><span>Unit Converters</span><span class="dropdown-count">8</span></a>
+                <a href="categories/education.html" class="dropdown-link" role="menuitem"><span>Education</span><span class="dropdown-count">5</span></a>
+                <a href="categories/business.html" class="dropdown-link" role="menuitem"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="about.html" class="nav-link is-active" aria-current="page">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button
+            type="button"
+            class="icon-btn"
+            data-header-search-toggle
+            aria-label="Search calculators"
+            aria-expanded="false"
+            aria-controls="header-search-bar"
+            title="Search calculators"
+          >
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="icon-btn"
+            data-theme-toggle
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+            title="Switch to dark mode"
+          >
+            <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="icon-btn mobile-menu-btn"
+            data-mobile-menu-toggle
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav-drawer"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Legal & Information</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms and Conditions</a></li>
-          <li><a href="disclaimer.html">Disclaimer</a></li>
-          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      <div id="header-search-bar" class="header-search-bar">
+        <div class="container">
+          <div class="header-search-wrap" data-search-widget>
+            <label for="header-calc-search" class="sr-only">Search all calculators</label>
+            <div class="search-input-group">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                id="header-calc-search"
+                type="search"
+                class="search-input search-input-compact"
+                placeholder="Search calculators (e.g., Mortgage, BMI, Percentage, Pressure, GPA)..."
+                autocomplete="off"
+                data-search-input
+                aria-autocomplete="list"
+                aria-expanded="false"
+                aria-controls="header-search-results"
+              />
+              <button type="button" class="search-clear-btn" data-search-clear aria-label="Clear search">&times;</button>
+            </div>
+            <div id="header-search-results" class="search-results" role="listbox" data-search-results></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="mobile-nav-drawer" class="mobile-drawer" aria-hidden="true">
+      <nav aria-label="Mobile Navigation">
+        <ul class="mobile-nav-list">
+          <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+          <li><a href="all-calculators.html" class="mobile-nav-link">All Calculators (50)</a></li>
+          <li><a href="articles/index.html" class="mobile-nav-link">Calculation Guides</a></li>
+          <li><a href="about.html" class="mobile-nav-link is-active">About Us</a></li>
+          <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
         </ul>
-      </div>
+        <div class="mobile-nav-group-title">Calculator Categories</div>
+        <ul class="mobile-nav-list">
+          <li><a href="categories/math.html" class="mobile-nav-link"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="categories/finance.html" class="mobile-nav-link"><span>Financial</span><span class="dropdown-count">12</span></a></li>
+          <li><a href="categories/health.html" class="mobile-nav-link"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="categories/date-time.html" class="mobile-nav-link"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="categories/converters.html" class="mobile-nav-link"><span>Unit Converters</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="categories/education.html" class="mobile-nav-link"><span>Education</span><span class="dropdown-count">5</span></a></li>
+          <li><a href="categories/business.html" class="mobile-nav-link"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a></li>
+        </ul>
+      </nav>
     </div>
-  </footer>
-  <script src="assets/js/theme.js"></script>
-  <script src="assets/js/main.js"></script>
-</body>
+
+    <main id="main-content">
+      <section class="page-header">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">About Us</span>
+          </nav>
+          <h1 class="page-title">About CalcMaster</h1>
+          <p class="page-intro">
+            Free Online Calculators for Everyday Life—providing fast, transparent, browser-based calculation tools and educational guides without sign-ups or paywalls.
+          </p>
+        </div>
+      </section>
+
+      <section class="calc-section">
+        <div class="container">
+          <div class="content-grid">
+            <article class="prose-block">
+              <h2>What CalcMaster Provides</h2>
+              <p>
+                CalcMaster is a free web resource offering 50 browser-based online calculators, unit converters, and companion educational articles across seven practical categories:
+              </p>
+              <ul>
+                <li><strong><a href="categories/math.html">Basic &amp; Math (8 tools):</a></strong> Standard, scientific, percentage, average, fraction, ratio, square root, and random number utilities.</li>
+                <li><strong><a href="categories/finance.html">Financial (12 tools):</a></strong> Loan amortization, mortgage schedules, simple and compound interest, savings, investment growth, salary, hourly pay, profit margin, discounts, sales tax, and VAT.</li>
+                <li><strong><a href="categories/health.html">Health &amp; Fitness (6 tools):</a></strong> Body Mass Index (BMI), Basal Metabolic Rate (BMR), daily calorie needs (TDEE), ideal weight ranges, daily hydration, and body fat percentage estimates.</li>
+                <li><strong><a href="categories/date-time.html">Date &amp; Time (6 tools):</a></strong> Exact age, date differences, days between dates, time arithmetic, working days, and shift hours.</li>
+                <li><strong><a href="categories/converters.html">Unit Converters (8 tools):</a></strong> Length, weight, temperature, volume, speed, area, data storage, and pressure conversions across metric, US customary, and imperial standards.</li>
+                <li><strong><a href="categories/education.html">Education (5 tools):</a></strong> Semester and cumulative GPA, weighted course grades, exam scores, weighted averages, and final exam targets.</li>
+                <li><strong><a href="categories/business.html">Business &amp; Marketing (5 tools):</a></strong> Return on Investment (ROI), Return on Ad Spend (ROAS), break-even analysis, revenue projections, and cost markup.</li>
+              </ul>
+
+              <h2>How Our Calculators Work</h2>
+              <p>
+                Every tool on CalcMaster is built as a lightweight client-side utility running directly in your web browser via JavaScript. Because math and parsing run locally on your device:
+              </p>
+              <ul>
+                <li><strong>Instant responses:</strong> No server round-trips or loading spinners are required to compute results.</li>
+                <li><strong>Input validation &amp; clarity:</strong> Forms check for invalid or out-of-range numbers and display clear inline messages.</li>
+                <li><strong>Visible formulas:</strong> Calculator pages and <a href="articles/index.html">Calculation Guides</a> explain the underlying equations, assumptions, and worked examples so you can verify how every number is derived.</li>
+                <li><strong>Device-local privacy:</strong> Personal entries such as salaries, loan balances, health measurements, or grades are processed only in memory on your device and are not sent to a CalcMaster database.</li>
+              </ul>
+
+              <h2>Informational Scope &amp; Important Boundaries</h2>
+              <p>
+                CalcMaster is strictly an informational and educational platform. Please keep two critical boundaries in mind whenever using our tools:
+              </p>
+              <div class="disclaimer-box" role="note">
+                <strong>Health &amp; Financial Notice:</strong> Health calculators (such as BMI, BMR, Daily Calorie, Ideal Weight, Water Intake, and Body Fat) generate general mathematical screening estimates and are <strong>not medical diagnoses</strong> or clinical recommendations. Financial, tax, and business calculators provide simplified educational illustrations and are <strong>not professional financial, investment, tax, or legal advice</strong>. Always consult qualified healthcare, financial, or tax professionals before making major personal decisions.
+              </div>
+              <p>
+                For full details on formula scope and limitations, please review our <a href="disclaimer.html">Website &amp; Calculation Disclaimer</a> and <a href="terms.html">Terms &amp; Conditions</a>.
+              </p>
+
+              <h2>Who CalcMaster Is Built For</h2>
+              <p>
+                CalcMaster serves everyday readers, students, homeowners, small business owners, educators, and shoppers across the United States, Canada, the United Kingdom, Australia, and around the world—offering metric, US customary, and imperial units alongside multi-currency formatting symbols.
+              </p>
+            </article>
+
+            <aside>
+              <div class="sidebar-card">
+                <h2 class="calc-panel-title">Explore CalcMaster</h2>
+                <ul class="sidebar-links">
+                  <li><a href="all-calculators.html">Browse All 50 Calculators</a></li>
+                  <li><a href="articles/index.html">Read Calculation Guides</a></li>
+                  <li><a href="contact.html">Contact &amp; Feedback</a></li>
+                </ul>
+              </div>
+              <div class="sidebar-card">
+                <h2 class="calc-panel-title">Policies &amp; Disclosures</h2>
+                <ul class="sidebar-links">
+                  <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                  <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                  <li><a href="disclaimer.html">Calculation Disclaimer</a></li>
+                  <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="brand-link" aria-label="CalcMaster Home">
+              <img src="assets/images/logo.svg" alt="CalcMaster calculator logo mark" class="brand-logo-full" width="160" height="34" decoding="async" />
+            </a>
+            <p class="footer-brand-desc">
+              Free Online Calculators for Everyday Life. Built for fast, accurate browser-based math, finance, health, date, unit conversion, education, and business calculations.
+            </p>
+          </div>
+          <div>
+            <h3 class="footer-heading">Categories</h3>
+            <ul class="footer-links">
+              <li><a href="categories/math.html">Basic &amp; Math</a></li>
+              <li><a href="categories/finance.html">Financial</a></li>
+              <li><a href="categories/health.html">Health &amp; Fitness</a></li>
+              <li><a href="categories/date-time.html">Date &amp; Time</a></li>
+              <li><a href="categories/converters.html">Unit Converters</a></li>
+              <li><a href="categories/education.html">Education</a></li>
+              <li><a href="categories/business.html">Business</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Popular Tools</h3>
+            <ul class="footer-links">
+              <li><a href="calculators/percentage-calculator.html">Percentage Calculator</a></li>
+              <li><a href="calculators/loan-calculator.html">Loan Calculator</a></li>
+              <li><a href="calculators/mortgage-calculator.html">Mortgage Calculator</a></li>
+              <li><a href="calculators/bmi-calculator.html">BMI Calculator</a></li>
+              <li><a href="calculators/age-calculator.html">Age Calculator</a></li>
+              <li><a href="calculators/discount-calculator.html">Discount Calculator</a></li>
+              <li><a href="all-calculators.html">All 50 Calculators</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Company &amp; Legal</h3>
+            <ul class="footer-links">
+              <li><a href="articles/index.html">Calculation Guides</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span data-current-year>2026</span> CalcMaster. All rights reserved.</p>
+          <p>All calculations run locally in your browser. For informational and educational use only.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/search.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
 </html>

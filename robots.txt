@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://calcmaster.free.nf/sitemap.xml
+
+# Replace placeholder domain with your live InfinityFree or custom domain
+Sitemap: https://your-subdomain.infinityfreeapp.com/sitemap.xml
