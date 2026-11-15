@@ -1,62 +1,277 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How To Calculate Daily Calories — CalcMaster</title>
-  <meta name="description" content="Learn How To Calculate Daily Calories">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/responsive.css">
-</head>
-<body>
-  <header>
-    <div class="nav-container">
-      <a href="../index.html" class="logo-link"><img src="../assets/images/logo.svg" alt="CalcMaster Logo"></a>
-      <button class="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
-      <ul class="nav-menu">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../categories/math.html">Math</a></li>
-        <li><a href="../categories/finance.html">Finance</a></li>
-        <li><a href="../categories/health.html">Health</a></li>
-        <li><a href="../categories/converters.html">Converters</a></li>
-        <li><a href="../categories/business.html">Business</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">🌓</button></li>
-      </ul>
-    </div>
-  </header>
-  <main style="max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; flex: 1; width: 100%;">
-    <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem;">How To Calculate Daily Calories</h1>
-    
-    <article class="calc-card" style="padding: 2.5rem;">
-      <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem;">How To Calculate Daily Calories</h1>
-      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">A comprehensive guide explaining how to calculate daily calories with examples and formulas.</p>
-      <p style="margin-bottom: 1rem;">Detailed educational content designed to help you understand the core concepts clearly and accurately.</p>
-    </article>
-    
-  </main>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4>CalcMaster</h4>
-        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Free online calculators designed for speed and accuracy.</p>
-        <p style="font-size: 0.85rem; color: #64748B;">© 2026 CalcMaster. All rights reserved.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Calculate Daily Calorie Needs (TDEE) | CalcMaster</title>
+    <meta name="description" content="Calculate your daily calorie needs (TDEE) using the Mifflin-St Jeor BMR formula, activity multipliers, and guidance for maintenance, weight loss, or gain." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563EB" />
+    <link rel="canonical" href="/articles/how-to-calculate-daily-calories.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="CalcMaster" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="/articles/how-to-calculate-daily-calories.html" />
+    <meta property="og:title" content="How to Calculate Daily Calorie Needs (TDEE) | CalcMaster" />
+    <meta property="og:description" content="Calculate your daily calorie needs (TDEE) using the Mifflin-St Jeor BMR formula, activity multipliers, and guidance for maintenance, weight loss, or gain." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="How to Calculate Daily Calorie Needs (TDEE) | CalcMaster" />
+    <meta name="twitter:description" content="Calculate your daily calorie needs (TDEE) using the Mifflin-St Jeor BMR formula, activity multipliers, and guidance for maintenance, weight loss, or gain." />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Calculate Your Daily Calorie Needs","description":"Learn how BMR and TDEE activity multipliers estimate daily calorie maintenance, weight loss, and muscle gain targets.","publisher":{"@type":"Organization","name":"CalcMaster"},"url":"/articles/how-to-calculate-daily-calories.html","mainEntityOfPage":{"@type":"WebPage","@id":"/articles/how-to-calculate-daily-calories.html"}}</script>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Calculation Guides","item":"/articles/index.html"},{"@type":"ListItem","position":3,"name":"How to Calculate Your Daily Calorie Needs","item":"/articles/how-to-calculate-daily-calories.html"}]}</script>
+  </head>
+  <body data-root="../">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="../index.html" class="brand-link" aria-label="CalcMaster Home">
+          <img src="../assets/images/logo.svg" alt="CalcMaster – Free Online Calculators for Everyday Life" class="brand-logo-full" width="188" height="40" decoding="async" />
+        </a>
+        <nav class="primary-nav" aria-label="Primary Navigation">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="../all-calculators.html" class="nav-link">All Calculators</a></li>
+            <li class="nav-item" data-dropdown-container>
+              <button type="button" class="nav-dropdown-btn" data-dropdown-toggle aria-expanded="false" aria-controls="header-categories-menu">
+                <span>Categories</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="header-categories-menu" class="dropdown-menu" role="menu">
+                <a href="../categories/math.html" class="dropdown-link" role="menuitem"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a>
+                <a href="../categories/finance.html" class="dropdown-link" role="menuitem"><span>Financial</span><span class="dropdown-count">12</span></a>
+                <a href="../categories/health.html" class="dropdown-link" role="menuitem"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a>
+                <a href="../categories/date-time.html" class="dropdown-link" role="menuitem"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a>
+                <a href="../categories/converters.html" class="dropdown-link" role="menuitem"><span>Unit Converters</span><span class="dropdown-count">8</span></a>
+                <a href="../categories/education.html" class="dropdown-link" role="menuitem"><span>Education</span><span class="dropdown-count">5</span></a>
+                <a href="../categories/business.html" class="dropdown-link" role="menuitem"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="../about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button type="button" class="icon-btn" data-header-search-toggle aria-label="Search calculators" aria-expanded="false" aria-controls="header-search-bar" title="Search calculators">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+          <button type="button" class="icon-btn" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+            <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="icon-btn mobile-menu-btn" data-mobile-menu-toggle aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Legal & Information</h4>
-        <ul>
-          <li><a href="../about.html">About Us</a></li>
-          <li><a href="../contact.html">Contact Us</a></li>
-          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../terms.html">Terms and Conditions</a></li>
-          <li><a href="../disclaimer.html">Disclaimer</a></li>
-          <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+      <div id="header-search-bar" class="header-search-bar">
+        <div class="container">
+          <div class="header-search-wrap" data-search-widget>
+            <label for="header-calc-search" class="sr-only">Search all calculators</label>
+            <div class="search-input-group">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input id="header-calc-search" type="search" class="search-input search-input-compact" placeholder="Search calculators (e.g., Loan, BMI, Percentage, Pressure, GPA)..." autocomplete="off" data-search-input aria-autocomplete="list" aria-expanded="false" aria-controls="header-search-results" />
+              <button type="button" class="search-clear-btn" data-search-clear aria-label="Clear search">&times;</button>
+            </div>
+            <div id="header-search-results" class="search-results" role="listbox" data-search-results></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="mobile-nav-drawer" class="mobile-drawer" aria-hidden="true">
+      <nav aria-label="Mobile Navigation">
+        <ul class="mobile-nav-list">
+          <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+          <li><a href="../all-calculators.html" class="mobile-nav-link">All Calculators (50)</a></li>
+          <li><a href="index.html" class="mobile-nav-link">Calculation Guides</a></li>
+          <li><a href="../about.html" class="mobile-nav-link">About Us</a></li>
+          <li><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
         </ul>
-      </div>
+        <div class="mobile-nav-group-title">Calculator Categories</div>
+        <ul class="mobile-nav-list">
+          <li><a href="../categories/math.html" class="mobile-nav-link"><span>Basic &amp; Math</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="../categories/finance.html" class="mobile-nav-link"><span>Financial</span><span class="dropdown-count">12</span></a></li>
+          <li><a href="../categories/health.html" class="mobile-nav-link"><span>Health &amp; Fitness</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="../categories/date-time.html" class="mobile-nav-link"><span>Date &amp; Time</span><span class="dropdown-count">6</span></a></li>
+          <li><a href="../categories/converters.html" class="mobile-nav-link"><span>Unit Converters</span><span class="dropdown-count">8</span></a></li>
+          <li><a href="../categories/education.html" class="mobile-nav-link"><span>Education</span><span class="dropdown-count">5</span></a></li>
+          <li><a href="../categories/business.html" class="mobile-nav-link"><span>Business &amp; Marketing</span><span class="dropdown-count">5</span></a></li>
+        </ul>
+      </nav>
     </div>
-  </footer>
-  <script src="../assets/js/theme.js"></script>
-  <script src="../assets/js/main.js"></script>
-</body>
+
+    <main id="main-content">
+      <section class="page-header">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="index.html">Articles</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">How to Calculate Your Daily Calorie Needs</span>
+          </nav>
+          <h1 class="page-title">How to Calculate Your Daily Calorie Needs</h1>
+          <p class="page-intro">Health &amp; Fitness &middot; 6 min read</p>
+        </div>
+      </section>
+
+      <section class="calc-section">
+        <div class="container">
+          <div class="content-grid">
+            <article class="prose-block">
+              <p>
+                Every person burns energy differently based on height, weight, age, biological sex, and daily movement. Estimating your <strong>Total Daily Energy Expenditure (TDEE)</strong> follows a transparent two-step process: first estimate how many calories your body needs at complete rest (Basal Metabolic Rate, or BMR), and then scale that resting figure by an activity multiplier.
+              </p>
+
+              <h2>Step 1: Estimate Basal Metabolic Rate (BMR)</h2>
+              <p>
+                Most modern dietetic tools rely on the <strong>Mifflin-St Jeor equation</strong> because it provides reliable baseline estimates across typical adult body compositions:
+              </p>
+              <div class="formula-box">
+                <strong>Mifflin-St Jeor Equation:</strong>
+                <code class="formula-code">Men: BMR = (10 &times; kg) + (6.25 &times; cm) &minus; (5 &times; age) + 5<br />Women: BMR = (10 &times; kg) + (6.25 &times; cm) &minus; (5 &times; age) &minus; 161</code>
+              </div>
+              <div class="example-box">
+                <p><strong>Example (30-year-old woman, 65 kg, 165 cm):</strong></p>
+                <p><code>BMR = (10 &times; 65) + (6.25 &times; 165) &minus; (5 &times; 30) &minus; 161 = 650 + 1,031.25 &minus; 150 &minus; 161 = 1,370 kcal/day</code>.</p>
+              </div>
+
+              <h2>Step 2: Multiply by Your Activity Level (TDEE)</h2>
+              <p>Once you have your resting BMR, multiply it by the factor that best reflects your weekly routine—including non-exercise walking and desk work, not just gym workouts:</p>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Activity Level</th>
+                      <th scope="col" class="num">Multiplier</th>
+                      <th scope="col">Typical Weekly Routine</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Sedentary</td><td class="num">1.20</td><td>Desk job, minimal deliberate exercise</td></tr>
+                    <tr><td>Lightly Active</td><td class="num">1.375</td><td>Light exercise or sports 1&ndash;3 days/week</td></tr>
+                    <tr><td>Moderately Active</td><td class="num">1.55</td><td>Moderate training 3&ndash;5 days/week</td></tr>
+                    <tr><td>Very Active</td><td class="num">1.725</td><td>Hard exercise 6&ndash;7 days/week or active job</td></tr>
+                    <tr><td>Extra Active</td><td class="num">1.90</td><td>Intense daily training or physical trade</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="example-box">
+                <p><strong>Continuing the Example (Moderately Active):</strong></p>
+                <p><code>TDEE = 1,370 &times; 1.55 &approx; 2,124 calories/day</code> to maintain current body weight.</p>
+              </div>
+
+              <h2>Step 3: Adjusting Calories Safely for Goals</h2>
+              <ul>
+                <li><strong>Weight maintenance:</strong> Eat roughly near your estimated TDEE while monitoring average weight trends over 2&ndash;3 weeks.</li>
+                <li><strong>Gradual fat loss:</strong> Moderate deficits of 300&ndash;500 calories below TDEE generally avoid unnecessary fatigue and muscle loss.</li>
+                <li><strong>Lean muscle gain:</strong> Modest surpluses of 200&ndash;300 calories above TDEE pair well with progressive resistance training and adequate protein.</li>
+              </ul>
+
+              <div class="disclaimer-box" role="note">
+                <strong>Medical &amp; Nutrition Disclaimer:</strong> BMR and TDEE equations provide statistical estimates, not exact laboratory calorimetry. Individual metabolism varies with genetics, thyroid function, medications, and lean muscle mass. Consult a physician or registered dietitian before making major dietary changes or setting aggressive calorie deficits.
+              </div>
+
+              <h2>Conclusion</h2>
+              <p>
+                Knowing your BMR and TDEE turns nutrition planning into an informed starting point you can refine based on real-world progress. Compute your personal baseline automatically using our <a href="../calculators/bmr-calculator.html">BMR Calculator</a>, <a href="../calculators/daily-calorie-calculator.html">Daily Calorie Calculator</a>, and <a href="../calculators/water-intake-calculator.html">Water Intake Calculator</a>.
+              </p>
+
+              <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:0.75rem;">
+                <a href="../calculators/daily-calorie-calculator.html" class="btn btn-primary">Open Daily Calorie Calculator &rarr;</a>
+                <a href="../categories/health.html" class="btn btn-secondary">All Health Calculators</a>
+              </div>
+            </article>
+
+            <aside>
+              <div class="sidebar-card">
+                <h2 class="calc-panel-title">Related Calculators</h2>
+                <ul class="sidebar-links">
+                  <li><a href="../calculators/daily-calorie-calculator.html">Daily Calorie Calculator</a></li>
+                  <li><a href="../calculators/bmr-calculator.html">BMR Calculator</a></li>
+                  <li><a href="../calculators/bmi-calculator.html">BMI Calculator</a></li>
+                  <li><a href="../calculators/water-intake-calculator.html">Water Intake Calculator</a></li>
+                </ul>
+              </div>
+              <div class="sidebar-card">
+                <h2 class="calc-panel-title">More Calculation Guides</h2>
+                <ul class="sidebar-links">
+                  <li><a href="how-to-calculate-bmi.html">How to Calculate Your BMI</a></li>
+                  <li><a href="how-to-convert-temperature-weight-length.html">How to Convert Temperature, Weight, and Length</a></li>
+                  <li><a href="how-to-calculate-age.html">How to Calculate Your Age Accurately</a></li>
+                  <li><a href="index.html">Browse All Educational Articles &rarr;</a></li>
+                </ul>
+              </div>
+              <aside class="ad-slot ad-slot-rectangle" data-ad-status="placeholder" aria-label="Sidebar advertisement slot">
+                <span class="ad-slot-label">ADVERTISEMENT SPACE (336 &times; 280)</span>
+                <span class="ad-slot-note">Reserved for official Google AdSense unit</span>
+              </aside>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="../index.html" class="brand-link" aria-label="CalcMaster Home">
+              <img src="../assets/images/logo.svg" alt="CalcMaster calculator logo mark" class="brand-logo-full" width="160" height="34" decoding="async" />
+            </a>
+            <p class="footer-brand-desc">
+              Free Online Calculators for Everyday Life. Built for fast, accurate browser-based math, finance, health, date, unit conversion, education, and business calculations.
+            </p>
+          </div>
+          <div>
+            <h3 class="footer-heading">Categories</h3>
+            <ul class="footer-links">
+              <li><a href="../categories/math.html">Basic &amp; Math</a></li>
+              <li><a href="../categories/finance.html">Financial</a></li>
+              <li><a href="../categories/health.html">Health &amp; Fitness</a></li>
+              <li><a href="../categories/date-time.html">Date &amp; Time</a></li>
+              <li><a href="../categories/converters.html">Unit Converters</a></li>
+              <li><a href="../categories/education.html">Education</a></li>
+              <li><a href="../categories/business.html">Business</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Popular Tools</h3>
+            <ul class="footer-links">
+              <li><a href="../calculators/percentage-calculator.html">Percentage Calculator</a></li>
+              <li><a href="../calculators/loan-calculator.html">Loan Calculator</a></li>
+              <li><a href="../calculators/mortgage-calculator.html">Mortgage Calculator</a></li>
+              <li><a href="../calculators/bmi-calculator.html">BMI Calculator</a></li>
+              <li><a href="../calculators/age-calculator.html">Age Calculator</a></li>
+              <li><a href="../calculators/discount-calculator.html">Discount Calculator</a></li>
+              <li><a href="../all-calculators.html">All 50 Calculators</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Company &amp; Legal</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Calculation Guides</a></li>
+              <li><a href="../about.html">About Us</a></li>
+              <li><a href="../contact.html">Contact Us</a></li>
+              <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="../disclaimer.html">Disclaimer</a></li>
+              <li><a href="../cookie-policy.html">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span data-current-year>2026</span> CalcMaster. All rights reserved.</p>
+          <p>All calculations run locally in your browser. For informational and educational use only.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/search.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+  </body>
 </html>
